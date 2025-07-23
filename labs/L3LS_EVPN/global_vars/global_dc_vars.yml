@@ -15,7 +15,7 @@ ansible_python_interpreter: $(which python3)
 avd_data_validation_mode: error
 
 # arista.avd.cv_deploy role parameters
-cv_token: # Fill in here with a CloudVision Service Account Token
+cv_token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkaWQiOjc1MDQ0MDYzMzQwNjI3MjMzMTYsImRzbiI6InN2Y2FjYzEiLCJkc3QiOiJhY2NvdW50IiwiZXhwIjoxNzUzNDg0Mzk5LCJpYXQiOjE3NTMyNzg2MzAsIm9naSI6Mywib2duIjoiRGVmYXVsdCIsInNpZCI6IjIxNjU5YzczMmRkYWVlMWZmYjlkZjU1MTEyMzgxZDkwNmJlNTk2MDVkNGFmM2YxMzJlZDU3N2UzM2UwZTJhMGMtUzJycGlJOGh5ZnZRTzRpaEt4UTRpMUhOYmNTSWhDdmtKQThER2tkQiJ9.MmDoNIMp_Owc6H6Ko2PpOsMIbrtzJt60nDY1RRUtLZSgjlYnsgZ0iuAixqkjQanmkZ6uKuV6PlZsGmR_CNxxXFt97ZBmcQ9kqQsoxEydSHzB_9U4NRHvSO5LZr16EjC_bQrWKiNwkvgvHHd9mhMlgHJnz6PqZRRxFlHYy-TDjq9raG_B6NsfnyzHligQd4UaZAZRlLwznoI6BugpCDaz13RJuXHJiT92IjvhszxSs2dZgZtYEUOvPJ2CjAZ_bYuK2YJsyCJW_MVeb6JJhFEu9U1LLXYx2qhR_i1FHNJwyA5PK3PJ7jwiv8t9MlSX6vqCqZfJjPc0VSvA8woOMzIscrDnZnLc1qzb5QNuDXDBJ-0D5PgdY8G8OY5eJfia0VamGs-DhgRgkjGaa_q0YoFbG8Rf2dl7uEGVSglZ7LkY4m5a64KoMO_aaFLTSDVAAdQtT0VSRuSWqcA2UGBbMX11r_dT8WGq33XmhSEQVKKzt4mCenh1V66fNxyYCNZElK9Wx7QyuvTw8iGR1NivQt-77g_wSHlJvOfcUOwvKeRsIsmjfXzZjGNAk9m1P9wnEZ4eKp9-y-TtVa6F5jqxG1cvNBNYOuZBj3-dWf89wEYLxjIfwtBJABdb8xuoy_tU3SAE2SakoXrse_zPCbR9cvtBpg5CJ5zsIdVgbkCWaPojHuo
 cv_server: cvp
 cv_verify_certs: false
 
@@ -82,27 +82,27 @@ bgp_peer_groups:
   mlag_ipv4_underlay_peer:
     password: 4b21pAdCvWeAqpcKDFMdWw==
 
-# # L3 Edge port definitions. This can be any port in the entire Fabric, where IP interfaces are defined.
-# l3_edge:
-#   # Define a new IP pool that will be used to assign IP addresses to L3 Edge interfaces.
-#   p2p_links_ip_pools:
-#     - name: S1_to_S2_IP_pool
-#       ipv4_pool: 172.16.255.0/24
-#   # Define a new link profile which will match the IP pool, the used ASNs and include the defined interface into underlay routing
-#   p2p_links_profiles:
-#     - name: S1_to_S2_profile
-#       ip_pool: S1_to_S2_IP_pool
-#       as: [ 65103, 65203 ]
-#       include_in_underlay_protocol: true
-#   # Define each P2P L3 link and link the nodes, the interfaces and the profile used.
-#   p2p_links:
-#     - id: 1
-#       nodes: [ s1-brdr1, s2-brdr1 ]
-#       interfaces: [ Ethernet4, Ethernet4 ]
-#       profile: S1_to_S2_profile
-#     - id: 2
-#       nodes: [ s1-brdr2, s2-brdr2 ]
-#       interfaces: [ Ethernet5, Ethernet5 ]
-#       profile: S1_to_S2_profile
+# L3 Edge port definitions. This can be any port in the entire Fabric, where IP interfaces are defined.
+l3_edge:
+   # Define a new IP pool that will be used to assign IP addresses to L3 Edge interfaces.
+   p2p_links_ip_pools:
+     - name: S1_to_S2_IP_pool
+       ipv4_pool: 172.16.255.0/24
+   # Define a new link profile which will match the IP pool, the used ASNs and include the defined interface into underlay routing
+   p2p_links_profiles:
+     - name: S1_to_S2_profile
+       ip_pool: S1_to_S2_IP_pool
+       as: [ 65103, 65203 ]
+       include_in_underlay_protocol: true
+   # Define each P2P L3 link and link the nodes, the interfaces and the profile used.
+   p2p_links:
+     - id: 1
+       nodes: [ s1-brdr1, s2-brdr1 ]
+       interfaces: [ Ethernet4, Ethernet4 ]
+       profile: S1_to_S2_profile
+     - id: 2
+       nodes: [ s1-brdr2, s2-brdr2 ]
+       interfaces: [ Ethernet5, Ethernet5 ]
+       profile: S1_to_S2_profile
 
 
